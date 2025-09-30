@@ -1,6 +1,12 @@
+import csv
+
+
 def carica_da_file(file_path):
-    """Carica i libri dal file"""
-    # TODO
+    try:
+        biblioteca=[]
+        with open(file_path,"r") as bibliotecaFile:
+            blibliotecaCsv=csv.reader(bibliotecaFile)
+
 
 
 def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path):
@@ -98,5 +104,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-#commit 1
-#commit 5
