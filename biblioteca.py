@@ -98,6 +98,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-    #modifica di prova
-    #commit 1
-
