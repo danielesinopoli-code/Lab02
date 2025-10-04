@@ -48,13 +48,15 @@ def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path)
 def cerca_libro(biblioteca, titolo):
     for libro in biblioteca:
         if libro["titolo"].lower() == titolo.lower():
-            return f"{libro['titolo']},{libro["autore"]},{libro["anno"]},{libro["pagine"]},{libro["sezione"]}"
+            return f"{libro['titolo']},{libro["autore"]},{libro["anno"]},{libro["pagine"]},{libro["sezioni"]}"
     return None
 
 
 def elenco_libri_sezione_per_titolo(biblioteca, sezione):
-    """Ordina i titoli di una data sezione della biblioteca in ordine alfabetico"""
-    # TODO
+    sezioniLibri=[libro["titolo"] for libro in biblioteca if libro["sezioni"] == sezione]
+    if not(sezioniLibri):
+        return None
+    return sorted(sezioniLibri)
 
 
 def main():
