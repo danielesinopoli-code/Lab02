@@ -6,6 +6,21 @@ def carica_da_file(file_path):
         biblioteca=[]
         with open(file_path,"r") as bibliotecaFile:
             blibliotecaCsv=csv.reader(bibliotecaFile)
+            nSezioni = int(next(blibliotecaCsv)[0])
+            for riga in blibliotecaCsv:
+                titolo, autore, anno, pagine, sezione =[x.strip() for x in riga]
+                libro= {
+                    "titolo": titolo,
+                    "autore": autore,
+                    "anno": int(anno),
+                    "pagine": int(pagine),
+                    "sezioni": int(sezione)
+                }
+                biblioteca.append(libro)
+        return biblioteca
+    except FileNotFoundError:
+        print("File non trovato")
+        return None
 
 
 
