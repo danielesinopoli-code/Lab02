@@ -53,6 +53,7 @@ def cerca_libro(biblioteca, titolo):
 
 
 def elenco_libri_sezione_per_titolo(biblioteca, sezione):
+    #ordino sezioni per titolo
     sezioniLibri=[libro["titolo"] for libro in biblioteca if libro["sezioni"] == sezione]
     if not(sezioniLibri):
         return None
