@@ -7,7 +7,7 @@ def carica_da_file(file_path):
         with open(file_path,"r") as bibliotecaFile:
             blibliotecaCsv=csv.reader(bibliotecaFile)
             nSezioni = int(next(blibliotecaCsv)[0])
-            for riga in blibliotecaCsv:
+            for riga in blibliotecaCsv:   #uso lista di dizionari come struttura  dati
                 titolo, autore, anno, pagine, sezione =[x.strip() for x in riga]
                 libro= {
                     "titolo": titolo,
@@ -25,8 +25,24 @@ def carica_da_file(file_path):
 
 
 def aggiungi_libro(biblioteca, titolo, autore, anno, pagine, sezione, file_path):
-    """Aggiunge un libro nella biblioteca"""
-    # TODO
+    for libro in biblioteca:
+        if libro["titolo".lower()] == titolo.lower():
+            return None
+    nuovoLIbro={
+        "titolo": titolo,
+        "autore": autore,
+        "anno": int(anno),
+        "pagine": int(pagine),
+        "sezioni": int(sezione)
+    }
+    biblioteca.append(nuovoLIbro)
+    try:
+        with open(file_path,"a",newline="") as bibliotecaFile:
+            bibliotecaCsv=csv.writer(bibliotecaFile)
+            bibliotecaCsv.writerow([titolo, autore, anno, pagine, sezione])
+    except FileNotFoundError:
+        return None
+    return nuovoLIbro
 
 
 def cerca_libro(biblioteca, titolo):
